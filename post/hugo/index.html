@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  
+  <meta name="author" content="">
+
+  
+  
+  <meta name="description" content="title: &ldquo;Blog create&rdquo; date: 2022-06-12T15:36:42&#43;08:00 notes on how this blog is create.
+ 介绍  gitee 和 github都提供静态网站托管服务。在gitee page的页面可以看到描述： Gitee Pages 服务 一个支持Jekyll、Hugo、Hexo静态网站的服务 使用帮助
+https://gitee.com/help/articles/4136#article-header4
+ Jekyll、Hugo、Hexo 究竟是什么？
+Jekyll、Hugo、Hexo 是简单的博客形态的静态站点生产机器。它有一个模版目录，其中包含原始文本格式的文档，通过 Markdown 以及 Liquid 转化成一个完整的可发布的静态网站，你可以发布在任何你喜爱的服务器上。Jekyll、Hugo、Hexo 也可以运行在 Gitee Pages 上，也就是说，你可以使用 Gitee 的服务来搭建你的仓库页面、博客或者网站，而且是完全免费的。
+Jekyll 使用文档：https://www.jekyll.com.cn/docs/home/ Hugo 使用文档：https://gohugo.io/documentation/ Hexo 使用文档：https://hexo.io/docs/
+ markdown基本语法  https://markdown.com.cn/basic-syntax/
+技术选型  Jekyll基于ruby； hugo基于go; hexo基于nodejs；
+选择hugo.
+过程  参考：https://www.gohugo.org
+在https://themes.gohugo.io/themes 选一个主题， git submodule add https://github.com/queensferryme/hugo-theme-texify.git themes/hugo-theme-texify 就可以clone下来。 当前选用了这个主题： https://themes.gohugo.io/themes/hugo-theme-texify/">
+  
+
+  
+  <link rel="icon" href="http://luzhongzhou.github.io/favicon.ico">
+
+  
+  
+  <meta name="keywords" content=" hugo  latex  theme ">
+  
+
+  
+  
+
+  
+  <meta property="og:title" content="Hugo" />
+<meta property="og:description" content="title: &ldquo;Blog create&rdquo; date: 2022-06-12T15:36:42&#43;08:00 notes on how this blog is create.
+ 介绍  gitee 和 github都提供静态网站托管服务。在gitee page的页面可以看到描述： Gitee Pages 服务 一个支持Jekyll、Hugo、Hexo静态网站的服务 使用帮助
+https://gitee.com/help/articles/4136#article-header4
+ Jekyll、Hugo、Hexo 究竟是什么？
+Jekyll、Hugo、Hexo 是简单的博客形态的静态站点生产机器。它有一个模版目录，其中包含原始文本格式的文档，通过 Markdown 以及 Liquid 转化成一个完整的可发布的静态网站，你可以发布在任何你喜爱的服务器上。Jekyll、Hugo、Hexo 也可以运行在 Gitee Pages 上，也就是说，你可以使用 Gitee 的服务来搭建你的仓库页面、博客或者网站，而且是完全免费的。
+Jekyll 使用文档：https://www.jekyll.com.cn/docs/home/ Hugo 使用文档：https://gohugo.io/documentation/ Hexo 使用文档：https://hexo.io/docs/
+ markdown基本语法  https://markdown.com.cn/basic-syntax/
+技术选型  Jekyll基于ruby； hugo基于go; hexo基于nodejs；
+选择hugo.
+过程  参考：https://www.gohugo.org
+在https://themes.gohugo.io/themes 选一个主题， git submodule add https://github.com/queensferryme/hugo-theme-texify.git themes/hugo-theme-texify 就可以clone下来。 当前选用了这个主题： https://themes.gohugo.io/themes/hugo-theme-texify/" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://luzhongzhou.github.io/post/hugo/" />
+<meta property="article:published_time" content="2022-06-12T21:18:53+08:00" />
+<meta property="article:modified_time" content="2022-06-12T21:18:53+08:00" />
+
+
+  
+  <link rel="canonical" href="http://luzhongzhou.github.io/post/hugo/">
+
+  
+  
+  <meta itemprop="name" content="Hugo">
+<meta itemprop="description" content="title: &ldquo;Blog create&rdquo; date: 2022-06-12T15:36:42&#43;08:00 notes on how this blog is create.
+ 介绍  gitee 和 github都提供静态网站托管服务。在gitee page的页面可以看到描述： Gitee Pages 服务 一个支持Jekyll、Hugo、Hexo静态网站的服务 使用帮助
+https://gitee.com/help/articles/4136#article-header4
+ Jekyll、Hugo、Hexo 究竟是什么？
+Jekyll、Hugo、Hexo 是简单的博客形态的静态站点生产机器。它有一个模版目录，其中包含原始文本格式的文档，通过 Markdown 以及 Liquid 转化成一个完整的可发布的静态网站，你可以发布在任何你喜爱的服务器上。Jekyll、Hugo、Hexo 也可以运行在 Gitee Pages 上，也就是说，你可以使用 Gitee 的服务来搭建你的仓库页面、博客或者网站，而且是完全免费的。
+Jekyll 使用文档：https://www.jekyll.com.cn/docs/home/ Hugo 使用文档：https://gohugo.io/documentation/ Hexo 使用文档：https://hexo.io/docs/
+ markdown基本语法  https://markdown.com.cn/basic-syntax/
+技术选型  Jekyll基于ruby； hugo基于go; hexo基于nodejs；
+选择hugo.
+过程  参考：https://www.gohugo.org
+在https://themes.gohugo.io/themes 选一个主题， git submodule add https://github.com/queensferryme/hugo-theme-texify.git themes/hugo-theme-texify 就可以clone下来。 当前选用了这个主题： https://themes.gohugo.io/themes/hugo-theme-texify/">
+<meta itemprop="datePublished" content="2022-06-12T21:18:53+08:00" />
+<meta itemprop="dateModified" content="2022-06-12T21:18:53+08:00" />
+<meta itemprop="wordCount" content="128">
+
+
+
+<meta itemprop="keywords" content="" />
+
+
+  
+  <link media="screen" rel="stylesheet" href='http://luzhongzhou.github.io/css/common.css'>
+  <link media="screen" rel="stylesheet" href='http://luzhongzhou.github.io/css/content.css'>
+
+  
+  
+  <title>Hugo - notes</title>
+  
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hugo"/>
+<meta name="twitter:description" content="title: &ldquo;Blog create&rdquo; date: 2022-06-12T15:36:42&#43;08:00 notes on how this blog is create.
+ 介绍  gitee 和 github都提供静态网站托管服务。在gitee page的页面可以看到描述： Gitee Pages 服务 一个支持Jekyll、Hugo、Hexo静态网站的服务 使用帮助
+https://gitee.com/help/articles/4136#article-header4
+ Jekyll、Hugo、Hexo 究竟是什么？
+Jekyll、Hugo、Hexo 是简单的博客形态的静态站点生产机器。它有一个模版目录，其中包含原始文本格式的文档，通过 Markdown 以及 Liquid 转化成一个完整的可发布的静态网站，你可以发布在任何你喜爱的服务器上。Jekyll、Hugo、Hexo 也可以运行在 Gitee Pages 上，也就是说，你可以使用 Gitee 的服务来搭建你的仓库页面、博客或者网站，而且是完全免费的。
+Jekyll 使用文档：https://www.jekyll.com.cn/docs/home/ Hugo 使用文档：https://gohugo.io/documentation/ Hexo 使用文档：https://hexo.io/docs/
+ markdown基本语法  https://markdown.com.cn/basic-syntax/
+技术选型  Jekyll基于ruby； hugo基于go; hexo基于nodejs；
+选择hugo.
+过程  参考：https://www.gohugo.org
+在https://themes.gohugo.io/themes 选一个主题， git submodule add https://github.com/queensferryme/hugo-theme-texify.git themes/hugo-theme-texify 就可以clone下来。 当前选用了这个主题： https://themes.gohugo.io/themes/hugo-theme-texify/"/>
+
+
+  
+<link rel="stylesheet" href='http://luzhongzhou.github.io/css/single.css'>
+
+</head>
+
+<body>
+  <div id="wrapper">
+    <header id="header">
+  <h1>
+    <a href="http://luzhongzhou.github.io/">notes</a>
+  </h1>
+
+  <nav>
+    
+    <span class="nav-bar-item">
+      <a class="link" href="/">Post</a>
+    </span>
+    
+    <span class="nav-bar-item">
+      <a class="link" href="/post/">Archives</a>
+    </span>
+    
+    <span class="nav-bar-item">
+      <a class="link" href="/about/">About</a>
+    </span>
+    
+  </nav>
+</header>
+
+    
+<main id="main" class="post">
+  
+  
+  <h1>Hugo</h1>
+  
+  
+  <article class="content">
+    
+    <hr>
+<h2 id="date-2022-06-12t1536420800">title: &ldquo;Blog create&rdquo;
+date: 2022-06-12T15:36:42+08:00</h2>
+<p>notes on how this blog is create.</p>
+<ol>
+<li>介绍</li>
+</ol>
+<p>gitee 和 github都提供静态网站托管服务。在gitee page的页面可以看到描述：
+Gitee Pages 服务 一个支持Jekyll、Hugo、Hexo静态网站的服务 使用帮助</p>
+<p><a href="https://gitee.com/help/articles/4136#article-header4">https://gitee.com/help/articles/4136#article-header4</a></p>
+<blockquote>
+<p>Jekyll、Hugo、Hexo 究竟是什么？</p>
+<p>Jekyll、Hugo、Hexo 是简单的博客形态的静态站点生产机器。它有一个模版目录，其中包含原始文本格式的文档，通过 Markdown 以及 Liquid 转化成一个完整的可发布的静态网站，你可以发布在任何你喜爱的服务器上。Jekyll、Hugo、Hexo 也可以运行在 Gitee Pages 上，也就是说，你可以使用 Gitee 的服务来搭建你的仓库页面、博客或者网站，而且是完全免费的。</p>
+<p>Jekyll 使用文档：https://www.jekyll.com.cn/docs/home/
+Hugo 使用文档：https://gohugo.io/documentation/
+Hexo 使用文档：https://hexo.io/docs/</p>
+</blockquote>
+<ol start="2">
+<li>markdown基本语法</li>
+</ol>
+<p><a href="https://markdown.com.cn/basic-syntax/">https://markdown.com.cn/basic-syntax/</a></p>
+<ol start="3">
+<li>技术选型</li>
+</ol>
+<p>Jekyll基于ruby；
+hugo基于go;
+hexo基于nodejs；</p>
+<p>选择hugo.</p>
+<ol start="4">
+<li>过程</li>
+</ol>
+<p>参考：https://www.gohugo.org</p>
+<p>在https://themes.gohugo.io/themes 选一个主题，
+git submodule add <a href="https://github.com/queensferryme/hugo-theme-texify.git">https://github.com/queensferryme/hugo-theme-texify.git</a> themes/hugo-theme-texify
+就可以clone下来。
+当前选用了这个主题：
+<a href="https://themes.gohugo.io/themes/hugo-theme-texify/">https://themes.gohugo.io/themes/hugo-theme-texify/</a></p>
+<p>基本命令：
+$ hugo new site /path/to/site
+$ hugo new about.md         //content目录下
+$ hugo new post/first.md     //post目录下</p>
+<p>$ hugo server &ndash;theme=hyde &ndash;buildDrafts //运行本地server
+$ hugo &ndash;theme=hugo-theme-texify &ndash;baseUrl=&ldquo;<a href="http://coderzh.github.io/%22">http://coderzh.github.io/&quot;</a> //生成静态页面</p>
+<ol start="5">
+<li>
+<p>排错</p>
+<ul>
+<li>
+<p>git fatal: refusing to merge unrelated histories
+本地仓库有提交之后才添加远程仓库，或者说远程仓库和本地仓库各有提交，会有该报错。
+解决方法是添加&ndash;allow-unrelated-histories选项：
+git pull origin master &ndash;allow-unrelated-histories</p>
+</li>
+<li>
+<p>github 登陆机制
+remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+是生成自己的token，在输入密码时输入token而不是密码。
+参考：https://zhuanlan.zhihu.com/p/401978754</p>
+</li>
+<li>
+<p>gitpage 默认网页为index</p>
+</li>
+</ul>
+</li>
+</ol>
+
+    
+  </article>
+  <div class="paginator">
+    
+    <a></a>
+    
+    
+    <a></a>
+    
+  </div>
+  <div class="comment">
+    
+    
+    
+    
+    
+    
+  </div>
+  
+</main>
+
+    <footer id="footer">
+  <div>
+    <span>© 2019</span> - <span>2022</span>
+  </div>
+
+  <div>
+    <span>Powered by </span>
+    <a class="link" href="https://gohugo.io/">Hugo</a>
+    <span> 🍦 Theme </span>
+    <a class="link" href="https://github.com/queensferryme/hugo-theme-texify">TeXify</a>
+  </div>
+
+  <div class="footnote">
+    <span>Follow me on <a class=link href=https://github.com/queensferryme>GitHub</a>,
+<a class=link href=https://twitter.com/queensferryme>Twitter</a> or
+<a class=link href=/index.xml>RSS</a> |
+<a class=link href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh target=_blank rel=noopener>CC BY-NC-SA 4.0</a>
+</span>
+  </div>
+</footer>
+
+  </div>
+
+  
+  
+
+  
+  
+
+  
+  
+
+</body>
+
+</html>
