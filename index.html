@@ -55,6 +55,39 @@
 
     <ul class="p-articles">
       
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2022-06-12T15:36:42JST">Jun 12, 2022</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="http://luzhongzhou.github.io/blog/">Blog create</a></h2>
+  </header>
+
+  
+  <div class="summary">notes on how this blog is create.
+ 介绍  gitee 和 github都提供静态网站托管服务。在gitee page的页面可以看到描述： Gitee Pages 服务 一个支持Jekyll、Hugo、Hexo静态网站的服务 使用帮助
+https://gitee.com/help/articles/4136#article-header4
+ Jekyll、Hugo、Hexo 究竟是什么？
+Jekyll、Hugo、Hexo 是简单的博客形态的静态站点生产机器。它有一个模版目录，其中包含原始文本格式的文档，通过 Markdown 以及 Liquid 转化成一个完整的可发布的静态网站，你可以发布在任何你喜爱的服务器上。Jekyll、Hugo、Hexo 也可以运行在 Gitee Pages 上，也就是说，你可以使用 Gitee 的服务来搭建你的仓库页面、博客或者网站，而且是完全免费的。
+Jekyll 使用文档：https://www.jekyll.com.cn/docs/home/ Hugo 使用文档：https://gohugo.io/documentation/ Hexo 使用文档：https://hexo.io/docs/
+ markdown基本语法  https://markdown.com.cn/basic-syntax/
+技术选型  Jekyll基于ruby； hugo基于go; hexo基于nodejs；
+选择hugo.
+过程  参考：https://www.gohugo.org
+参考
+ 排错
+  git fatal: refusing to merge unrelated histories 本地仓库有提交之后才添加远程仓库，或者说远程仓库和本地仓库各有提交，会有该报错。 解决方法是添加&ndash;allow-unrelated-histories选项： git pull origin master &ndash;allow-unrelated-histories</div>
+
+  
+  <footer>
+    <a href="http://luzhongzhou.github.io/blog/" title="Blog create">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
     </ul>
 
     
@@ -70,6 +103,8 @@
       <div class="panel-title">LATESTS</div>
     </div>
     <div class="list-group">
+      
+      <a href="http://luzhongzhou.github.io/blog/" class="list-group-item">Blog create</a>
       
     </div>
   </section>
