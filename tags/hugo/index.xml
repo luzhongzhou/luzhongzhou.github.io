@@ -1,44 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>notes</title>
-    <link>http://luzhongzhou.github.io/</link>
-    <description>Recent content on notes</description>
+    <title>hugo on notes</title>
+    <link>http://luzhongzhou.github.io/tags/hugo/</link>
+    <description>Recent content in hugo on notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Jun 2022 00:25:37 +0800</lastBuildDate><atom:link href="http://luzhongzhou.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Dpdk_rfc2544</title>
-      <link>http://luzhongzhou.github.io/post/dpdk_rfc2544/</link>
-      <pubDate>Mon, 13 Jun 2022 00:25:37 +0800</pubDate>
-      
-      <guid>http://luzhongzhou.github.io/post/dpdk_rfc2544/</guid>
-      
-      <description>&lt;ol&gt;
-&lt;li&gt;影响吞吐的因素&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;cpu速率&lt;/p&gt;
-&lt;p&gt;假设报文是均匀到达，吞吐的上限是处理一个报文的时间要小于报文到达间隔，也即处理报文要比报文到达的快。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;队列容量&lt;/p&gt;
-&lt;p&gt;队列只起平滑作用。假如cpu除了处理报文，还需要做一些其他事情，比如housekeeping，那么这个时间内的报文会先放在队列里，等到CPU开始处理报文的时候能处理完（以为cpu处理比报文到达快）。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;rss哈希均匀&lt;/p&gt;
-&lt;p&gt;假设分布不均，报文多的那条队列相当于报文来的更快，会先到达cpu上限，此时测试仪吞吐就测不上去了，即使其他core还没有达到上限。所以当看到测吞吐cpu不满时，大概率是这种情况。&lt;/p&gt;
-&lt;p&gt;一个问题是，随着流量速率的增高，如何却分是因为队列太短而丢包，还是因为达到cpu速率上限而丢包。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;影响时延的因素&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-      
-    </item>
-    
+    <lastBuildDate>Sun, 12 Jun 2022 21:18:53 +0800</lastBuildDate><atom:link href="http://luzhongzhou.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo</title>
       <link>http://luzhongzhou.github.io/post/hugo/</link>

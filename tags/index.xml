@@ -5,6 +5,62 @@
     <link>http://luzhongzhou.github.io/tags/</link>
     <description>Recent content in Tags on notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://luzhongzhou.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Jun 2022 00:25:37 +0800</lastBuildDate><atom:link href="http://luzhongzhou.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dpdk</title>
+      <link>http://luzhongzhou.github.io/tags/dpdk/</link>
+      <pubDate>Mon, 13 Jun 2022 00:25:37 +0800</pubDate>
+      
+      <guid>http://luzhongzhou.github.io/tags/dpdk/</guid>
+      
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>latency</title>
+      <link>http://luzhongzhou.github.io/tags/latency/</link>
+      <pubDate>Mon, 13 Jun 2022 00:25:37 +0800</pubDate>
+      
+      <guid>http://luzhongzhou.github.io/tags/latency/</guid>
+      
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>throughput</title>
+      <link>http://luzhongzhou.github.io/tags/throughput/</link>
+      <pubDate>Mon, 13 Jun 2022 00:25:37 +0800</pubDate>
+      
+      <guid>http://luzhongzhou.github.io/tags/throughput/</guid>
+      
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>blog</title>
+      <link>http://luzhongzhou.github.io/tags/blog/</link>
+      <pubDate>Sun, 12 Jun 2022 21:18:53 +0800</pubDate>
+      
+      <guid>http://luzhongzhou.github.io/tags/blog/</guid>
+      
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>http://luzhongzhou.github.io/tags/hugo/</link>
+      <pubDate>Sun, 12 Jun 2022 21:18:53 +0800</pubDate>
+      
+      <guid>http://luzhongzhou.github.io/tags/hugo/</guid>
+      
+      <description></description>
+      
+    </item>
+    
   </channel>
 </rss>

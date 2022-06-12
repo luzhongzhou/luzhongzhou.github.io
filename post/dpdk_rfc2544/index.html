@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  
+  <meta name="author" content="">
+
+  
+  
+  <meta name="description" content="dpdk收发包，哪些因素影响时延和吞吐">
+  
+
+  
+  <link rel="icon" href="http://luzhongzhou.github.io/favicon.ico">
+
+  
+  
+  <meta name="keywords" content=" hugo  latex  theme ">
+  
+
+  
+  
+
+  
+  <meta property="og:title" content="Dpdk_rfc2544" />
+<meta property="og:description" content="dpdk收发包，哪些因素影响时延和吞吐" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://luzhongzhou.github.io/post/dpdk_rfc2544/" />
+<meta property="article:published_time" content="2022-06-13T00:25:37+08:00" />
+<meta property="article:modified_time" content="2022-06-13T00:25:37+08:00" />
+
+
+  
+  <link rel="canonical" href="http://luzhongzhou.github.io/post/dpdk_rfc2544/">
+
+  
+  
+  <meta itemprop="name" content="Dpdk_rfc2544">
+<meta itemprop="description" content="dpdk收发包，哪些因素影响时延和吞吐">
+<meta itemprop="datePublished" content="2022-06-13T00:25:37+08:00" />
+<meta itemprop="dateModified" content="2022-06-13T00:25:37+08:00" />
+<meta itemprop="wordCount" content="9">
+
+
+
+<meta itemprop="keywords" content="dpdk,latency,throughput," />
+
+
+  
+  <link media="screen" rel="stylesheet" href='http://luzhongzhou.github.io/css/common.css'>
+  <link media="screen" rel="stylesheet" href='http://luzhongzhou.github.io/css/content.css'>
+
+  
+  
+  <title>Dpdk_rfc2544 - notes</title>
+  
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dpdk_rfc2544"/>
+<meta name="twitter:description" content="dpdk收发包，哪些因素影响时延和吞吐"/>
+
+
+  
+<link rel="stylesheet" href='http://luzhongzhou.github.io/css/single.css'>
+
+</head>
+
+<body>
+  <div id="wrapper">
+    <header id="header">
+  <h1>
+    <a href="http://luzhongzhou.github.io/">notes</a>
+  </h1>
+
+  <nav>
+    
+    <span class="nav-bar-item">
+      <a class="link" href="/">Post</a>
+    </span>
+    
+    <span class="nav-bar-item">
+      <a class="link" href="/post/">Archives</a>
+    </span>
+    
+    <span class="nav-bar-item">
+      <a class="link" href="/about/">About</a>
+    </span>
+    
+  </nav>
+</header>
+
+    
+<main id="main" class="post">
+  
+  
+  <h1>Dpdk_rfc2544</h1>
+  
+  <div>
+    <b>Keywords: </b>
+    
+    <a class="link" href='http://luzhongzhou.github.io/tags/dpdk'>#dpdk</a>
+    
+    <a class="link" href='http://luzhongzhou.github.io/tags/latency'>#latency</a>
+    
+    <a class="link" href='http://luzhongzhou.github.io/tags/throughput'>#throughput</a>
+    
+  </div>
+  
+  
+  <article class="content">
+    
+    <ol>
+<li>影响吞吐的因素</li>
+</ol>
+<ul>
+<li>
+<p>cpu速率</p>
+<p>假设报文是均匀到达，吞吐的上限是处理一个报文的时间要小于报文到达间隔，也即处理报文要比报文到达的快。</p>
+</li>
+<li>
+<p>队列容量</p>
+<p>队列只起平滑作用。假如cpu除了处理报文，还需要做一些其他事情，比如housekeeping，那么这个时间内的报文会先放在队列里，等到CPU开始处理报文的时候能处理完（以为cpu处理比报文到达快）。</p>
+</li>
+<li>
+<p>rss哈希均匀</p>
+<p>假设分布不均，报文多的那条队列相当于报文来的更快，会先到达cpu上限，此时测试仪吞吐就测不上去了，即使其他core还没有达到上限。所以当看到测吞吐cpu不满时，大概率是这种情况。</p>
+<p>一个问题是，随着流量速率的增高，如何却分是因为队列太短而丢包，还是因为达到cpu速率上限而丢包。</p>
+</li>
+</ul>
+<ol start="2">
+<li>影响时延的因素</li>
+</ol>
+
+    
+  </article>
+  <div class="paginator">
+    
+    <a class="link" href="http://luzhongzhou.github.io/post/hugo/">← prev</a>
+    
+    
+    <a></a>
+    
+  </div>
+  <div class="comment">
+    
+    
+    
+    
+    
+    
+  </div>
+  
+</main>
+
+    <footer id="footer">
+  <div>
+    <span>© 2019</span> - <span>2022</span>
+  </div>
+
+  <div>
+    <span>Powered by </span>
+    <a class="link" href="https://gohugo.io/">Hugo</a>
+    <span> 🍦 Theme </span>
+    <a class="link" href="https://github.com/queensferryme/hugo-theme-texify">TeXify</a>
+  </div>
+
+  <div class="footnote">
+    <span>Follow me on <a class=link href=https://github.com/queensferryme>GitHub</a>,
+<a class=link href=https://twitter.com/queensferryme>Twitter</a> or
+<a class=link href=/index.xml>RSS</a> |
+<a class=link href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh target=_blank rel=noopener>CC BY-NC-SA 4.0</a>
+</span>
+  </div>
+</footer>
+
+  </div>
+
+  
+  
+
+  
+  
+
+  
+  
+
+</body>
+
+</html>
