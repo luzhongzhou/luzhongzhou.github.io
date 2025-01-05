@@ -12,16 +12,61 @@
                 <header id="banner" class="body">
                         <h1><a href="/">zzlu's notes</a></h1>
                         <nav><ul>
+                                                <li><a href="/category/dpdk.html">dpdk</a></li>
+                                                <li><a href="/category/pelican.html">pelican</a></li>
                                                 <li><a href="/category/review.html">Review</a></li>
                         </ul></nav>
                 </header><!-- /#banner -->
 
                 <aside id="featured" class="body">
                     <article>
-                        <h1 class="entry-title"><a href="/my-first-review.html">My First Review</a></h1>
+                        <h1 class="entry-title"><a href="/dpdk-rfc2544.html">dpdk rfc2544</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2025-01-05T21:01:00+08:00">
-                Published: 日 05 一月 2025
+                Published: Sun 05 January 2025
+        </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="/author/zzlu.html">zzlu</a>
+                </address>
+        <p>In <a href="/category/dpdk.html">dpdk</a>.</p>
+        
+</footer><!-- /.post-info --><li>影响吞吐的因素</li>
+</ol>
+<ul>
+<li>
+<p>cpu速率</p>
+<p>假设报文是均匀到达，吞吐的上限是处理一个报文的时间要小于报文到达间隔，也即处理报文要比报文到达的快。</p>
+</li>
+<li>
+<p>队列容量</p>
+<p>队列只起平滑作用。假如cpu除了处理报文，还需要做一些其他事情，比如housekeeping，那么这个时间内的报文会先放在队列里，等到CPU开始处理报文的时候能处理完（以为cpu处理比报文到达快）。</p>
+</li>
+<li>
+<p>rss哈希均匀</p>
+<p>假设分布不均，报文多的那条队列相当于报文来的更快，会先到达cpu上限，此时测试仪吞吐就测不上去了，即使其他core还没有达到上限。所以当看到测吞吐cpu不满时，大概率是这种情况。</p>
+<p>一个问题是，随着流量速率的增高，如何却分是因为队列太短而丢包，还是因为达到cpu速率上限而丢包。</p>
+</li>
+</ul>
+<ol start="2">
+<li>影响时延的因素</li>
+</ol>                    </article>
+                </aside><!-- /#featured -->
+                    <section id="content" class="body">
+                        <h1>Other articles</h1>
+                        <hr />
+                        <ol id="posts-list" class="hfeed">
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/my-first-review.html" rel="bookmark"
+                               title="Permalink to My First Review">My First Review</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2025-01-05T21:01:00+08:00">
+                Published: Sun 05 January 2025
         </abbr>
 
                 <address class="vcard author">
@@ -29,8 +74,41 @@
                 </address>
         <p>In <a href="/category/review.html">Review</a>.</p>
         
-</footer><!-- /.post-info --><p>the new static content blog.</p>                    </article>
-                </aside><!-- /#featured -->
+</footer><!-- /.post-info -->                        <p>the new static content blog.</p>
+                        <a class="readmore" href="/my-first-review.html">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="/pelican-github-pages.html" rel="bookmark"
+                               title="Permalink to pelican github pages">pelican github pages</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2025-01-05T21:01:00+08:00">
+                Published: Sun 05 January 2025
+        </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="/author/zzlu.html">zzlu</a>
+                </address>
+        <p>In <a href="/category/pelican.html">pelican</a>.</p>
+        
+</footer><!-- /.post-info -->                        <p>跑通了，言简意赅的记录一下过程。</p>
+<h1>首先，安装pelican;</h1>
+<p>python -m pip install "pelican[markdown]"</p>
+<h1>创建一个github仓库</h1>
+<p>xxx.github.io;</p>
+<p>克隆到本地；</p>
+<h1>pelican-quickstart</h1>
+<p>会有一些问题，作为初始化 …</p>
+                        <a class="readmore" href="/pelican-github-pages.html">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+                    </ol><!-- /#posts-list -->
+                    </section><!-- /#content -->
                 <section id="extras" class="body">
                                 <div class="blogroll">
                                         <h2>links</h2>

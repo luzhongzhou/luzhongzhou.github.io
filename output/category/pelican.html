@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh">
+        <head>
+                        <meta charset="utf-8" />
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                        <meta name="generator" content="Pelican" />
+                        <title>zzlu's notes - pelican</title>
+                        <link rel="stylesheet" href="/theme/css/main.css" />
+        </head>
+
+        <body id="index" class="home">
+                <header id="banner" class="body">
+                        <h1><a href="/">zzlu's notes</a></h1>
+                        <nav><ul>
+                                                <li><a href="/category/dpdk.html">dpdk</a></li>
+                                                <li class="active"><a href="/category/pelican.html">pelican</a></li>
+                                                <li><a href="/category/review.html">Review</a></li>
+                        </ul></nav>
+                </header><!-- /#banner -->
+
+                <aside id="featured" class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="/pelican-github-pages.html">pelican github pages</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2025-01-05T21:01:00+08:00">
+                Published: Sun 05 January 2025
+        </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="/author/zzlu.html">zzlu</a>
+                </address>
+        <p>In <a href="/category/pelican.html">pelican</a>.</p>
+        
+</footer><!-- /.post-info --><p>跑通了，言简意赅的记录一下过程。</p>
+<h1>首先，安装pelican;</h1>
+<p>python -m pip install "pelican[markdown]"</p>
+<h1>创建一个github仓库</h1>
+<p>xxx.github.io;</p>
+<p>克隆到本地；</p>
+<h1>pelican-quickstart</h1>
+<p>会有一些问题，作为初始化选项,
+which begins by asking some questions about your site:</p>
+<p><img alt="pelican quickstart" src="../pictures/pelican-quickstart.jpg"></p>
+<p>其中，时区这一项填 Asia/Shanghai</p>
+<h1>GitHub 上设置免密码登录</h1>
+<p>这一步是必需的，因为当前github已经不再支持密码push仓库更新；</p>
+<p><em>remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/luzhongzhou/luzhongzhou.github.io.git/'</em></p>
+<p>为了在 GitHub 上设置免密码登录，你可以使用 SSH 密钥对来代替 HTTPS 协议进行身份验证。以下是设置过程的步骤：</p>
+<h3>生成一个新的 SSH 密钥（如果还没有的话）</h3>
+<p>如果你还没有一个 SSH 密钥，可以通过下面的命令生成一个新的密钥。你需要指定一个邮箱地址，这通常是你在 GitHub 上注册的邮箱。</p>
+<div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;your_email@example.com&quot;</span>
+</code></pre></div>
+
+<p>如果你的 SSH 客户端不支持 Ed25519 算法，你可以使用 RSA 算法：</p>
+<div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-b<span class="w"> </span><span class="m">4096</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;your_email@example.com&quot;</span>
+</code></pre></div>
+
+<p>系统会提示你输入文件保存位置和密码（passphrase）。如果你不想每次使用 SSH 密钥时都输入密码，可以留空直接按 Enter 键。</p>
+<h3>添加 SSH 密钥到 ssh-agent</h3>
+<p>启动 <code>ssh-agent</code> 并添加你的 SSH 私钥：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 启动 ssh-agent 在背景运行</span>
+<span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">&quot;</span>
+
+<span class="c1"># 添加 SSH 私钥到 ssh-agent</span>
+ssh-add<span class="w"> </span>~/.ssh/id_ed25519<span class="w">  </span><span class="c1"># 如果使用的是 Ed25519 算法</span>
+<span class="c1"># 或者</span>
+ssh-add<span class="w"> </span>~/.ssh/id_rsa<span class="w">      </span><span class="c1"># 如果使用的是 RSA 算法</span>
+</code></pre></div>
+
+<h3>将 SSH 公钥添加到 GitHub 账户</h3>
+<ol>
+<li>
+<p>复制你的 SSH 公钥内容。如果使用的是默认文件名，可以执行以下命令：
+   <code>bash
+   cat ~/.ssh/id_ed25519.pub  # 对于 Ed25519 算法
+   # 或者
+   cat ~/.ssh/id_rsa.pub      # 对于 RSA 算法</code></p>
+</li>
+<li>
+<p>登录到 GitHub，并进入账户设置中的 "SSH and GPG keys" 页面。</p>
+</li>
+<li>点击 "New SSH key" 按钮。</li>
+<li>给你的新 SSH 密钥提供一个标题（例如你的计算机名称），然后将之前复制的公钥粘贴到 "Key" 字段中。</li>
+<li>点击 "Add SSH key" 按钮完成添加。</li>
+</ol>
+<h3>测试 SSH 连接</h3>
+<p>最后，测试一下是否能成功连接 GitHub：</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-T<span class="w"> </span>git@github.com
+</code></pre></div>
+
+<p>你应该会看到一条欢迎信息，表明你已经成功设置了免密码登录。</p>
+<h3>更新本地仓库的远程 URL（如果需要）</h3>
+<p>如果你已经在使用 HTTPS 方式克隆了仓库，那么你需要更新远程 URL 为 SSH 格式。可以使用如下命令更改：</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span>git@github.com:username/repository.git
+</code></pre></div>
+
+<p>请确保替换 <code>username</code> 和 <code>repository</code> 为实际的用户名和仓库名。</p>
+<p>完成以上步骤后，你应该能够通过 SSH 免密码访问 GitHub 了。</p>
+<h1>pelican contents</h1>
+<p>该命令用于生成生成静态页面，在output目录下；</p>
+<h1>git push</h1>
+<p>推送到github仓库；</p>
+<h1>设置GitHub Pages</h1>
+<p>为了将 Pelican 生成的静态网站部署到 GitHub Pages，你需要完成以下几个步骤。这里假设你已经有一个 Pelican 项目，并且它已经被推送到 GitHub 仓库中。</p>
+<h3>1. 准备 Pelican 站点</h3>
+<p>确保你的 Pelican 项目可以正常生成静态文件。通常，你会在项目的根目录下运行 <code>pelican content</code> 来生成站点。这会在 <code>output</code> 文件夹（或你在配置中指定的输出目录）中创建所有静态文件。</p>
+<h3>2. 配置 GitHub Pages</h3>
+<p>前往你的 GitHub 仓库页面，点击左侧菜单中的 "Settings"，然后滚动到 "Pages" 部分（或者直接从侧边栏选择 "Pages"）。在这里你可以设置 GitHub Pages 的源：</p>
+<ul>
+<li>
+<p><strong>Source</strong>：选择分支和文件夹作为 GitHub Pages 的来源。对于 Pelican 项目，通常会使用默认分支（例如 <code>main</code> 或 <code>master</code>），并将 <code>/docs</code> 或 <code>/root</code> 作为路径。如果你希望使用一个专门的 <code>gh-pages</code> 分支，也可以选择这个选项。</p>
+</li>
+<li>
+<p>如果你选择 <code>/root</code>，那么所有的静态文件应该放在仓库的根目录下。</p>
+</li>
+<li>
+<p>如果你选择 <code>/docs</code>，则需要把所有静态文件放入名为 <code>docs</code> 的子目录中。</p>
+</li>
+<li>
+<p><strong>Custom domain (可选)</strong>：如果你有自定义域名，可以在这一栏输入你的域名。</p>
+</li>
+</ul>
+<p>这里我选用docs文件夹的方式，将output目录下的内容拷贝到docs文件夹下，并提交到github仓库中。</p>
+<h3>3. 自动化部署流程</h3>
+<p>为了让 GitHub Pages 在每次代码更新时自动更新站点内容，你可以设置一个 CI/CD 流程。最简单的方法是使用 GitHub Actions。以下是一个简单的 GitHub Action 工作流示例，用于构建并部署 Pelican 网站到 GitHub Pages：</p>
+<h4>创建 <code>.github/workflows/deploy.yml</code></h4>
+<p>在你的仓库根目录下创建一个 <code>.github/workflows</code> 目录（如果不存在的话），并在其中添加一个新的 YAML 文件 <code>deploy.yml</code>，内容如下：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to GitHub Pages</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span><span class="w">  </span><span class="c1"># 这里填写触发动作的分支名称</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build-and-deploy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout repository</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v3</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up Python</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v4</span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.x&#39;</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">pip install --upgrade pip</span>
+<span class="w">        </span><span class="no">pip install pelican markdown</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build the site</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">cd path/to/pelican/project  # 如果不是在根目录，请更改此路径</span>
+<span class="w">        </span><span class="no">pelican content -o output -s pelicanconf.py</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to GitHub Pages</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">peaceiris/actions-gh-pages@v3</span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">github_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+<span class="w">        </span><span class="nt">publish_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./path/to/output</span><span class="w">  </span><span class="c1"># 替换为你的输出目录</span>
+</code></pre></div>
+
+<p>请根据你的实际情况调整上述脚本中的路径和其他参数。这段代码会监听 <code>main</code> 分支上的推送事件，并在检测到新提交时执行一系列命令来安装依赖、构建站点并部署到 GitHub Pages。</p>
+<h3>4. 提交并推送更改</h3>
+<p>最后，将这些更改提交并推送到 GitHub 仓库：</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Setup GitHub Actions for Pelican deployment&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+
+<p>这样，当你的 Pelican 内容有任何更新并且被推送到仓库时，GitHub Actions 将自动为你构建并部署最新的静态站点到 GitHub Pages。</p>
+<h3>注意事项</h3>
+<ul>
+<li>确保你的 Pelican 项目配置正确，特别是 <code>pelicanconf.py</code> 中的设置。</li>
+<li>如果你正在使用 Jekyll 不支持的插件或特性，记得禁用它们，因为 GitHub Pages 默认使用 Jekyll 构建站点。</li>
+<li>检查 GitHub Pages 的构建日志以获取任何可能的问题信息。如果你选择了 <code>/root</code> 或 <code>/docs</code> 路径作为发布源，可以直接在 GitHub 上查看构建状态；如果你使用的是 <code>gh-pages</code> 分支，则需要通过 GitHub Actions 日志来监控构建过程。</li>
+</ul>
+<h1>参考文档：</h1>
+<p>[1] quickstart
+https://docs.getpelican.com/en/latest/quickstart.html </p>
+<p>[2] 全球城市ZoneId
+https://cloud.tencent.com/developer/article/1778546</p>                    </article>
+                </aside><!-- /#featured -->
+                <section id="extras" class="body">
+                                <div class="blogroll">
+                                        <h2>links</h2>
+                                        <ul>
+                                                        <li><a href="https://getpelican.com/">Pelican</a></li>
+                                                        <li><a href="https://www.python.org/">Python.org</a></li>
+                                                        <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                                                        <li><a href="#">You can modify those links in your config file</a></li>
+                                        </ul>
+                                </div><!-- /.blogroll -->
+                                <div class="social">
+                                        <h2>social</h2>
+                                        <ul>
+
+                                                        <li><a href="#">You can add links in your config file</a></li>
+                                                        <li><a href="#">Another social link</a></li>
+                                        </ul>
+                                </div><!-- /.social -->
+                </section><!-- /#extras -->
+
+                <footer id="contentinfo" class="body">
+                        <address id="about" class="vcard body">
+                                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                        </address><!-- /#about -->
+
+                        <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                </footer><!-- /#contentinfo -->
+
+        </body>
+</html>
